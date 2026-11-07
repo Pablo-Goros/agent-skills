@@ -1,8 +1,6 @@
 # Agent skills
 
-Personal standalone agent skills, shared across computers through Git.
-The checkout lives at `~/.agents`, so Codex discovers the skills directly in
-`~/.agents/skills`. There is no separate installation or copy step after pulling.
+Personal standalone agent skills.
 
 ## Set up another computer
 
@@ -25,44 +23,6 @@ back it up outside that directory first, clone the repo, then compare and bring
 over any local skills you want to keep. Commit and push those additions so the
 other computers receive them too.
 
-Open Codex and check the available skills. Codex detects skill changes
-automatically; restart it if a skill or update does not appear.
-
-## Receive updates
-
-Run this on each computer before using or editing the skills:
-
-```sh
-cd ~/.agents
-git pull --ff-only
-```
-
-In PowerShell, `cd "$env:USERPROFILE\.agents"` selects the same location.
-Git does not synchronize automatically. Pulling downloads changes already
-committed and pushed from another computer. No scheduled synchronization is
-configured by this repository.
-
-If a pull fails, run `git status`. Preserve any local edits by committing them or
-stashing them before retrying. If the branches have diverged, reconcile them
-explicitly; do not force-push or discard changes to make synchronization pass.
-
-## Edit and share skills
-
-Pull first, edit the files directly in `skills/`, then review and publish:
-
-```sh
-git diff
-git status --short
-git add skills
-git commit -m "docs: improve skill instructions"
-git push
-```
-
-If you change the repository documentation or configuration, stage those files
-explicitly too. On every other computer, use `git pull --ff-only` to receive the
-changes. Prefer finishing and pushing edits on one computer before editing the
-same skill on another.
-
 ## Repository layout
 
 ```text
@@ -80,10 +40,6 @@ Keep each skill's complete folder, including any supporting files stored beside
 instead of paths tied to a particular username or computer. Keep skill names
 unique across your installed skills.
 
-This repository includes the standalone `codebase` and `concept` skills migrated
-from `~/.codex/skills`. Edit their copies here going forward. Avoid reinstalling
-duplicate copies in the old location.
-
 ## Scope and dependencies
 
 - This repo tracks personal standalone skills and their supporting files.
@@ -99,8 +55,3 @@ duplicate copies in the old location.
   updates from the skills' original authors. Review and incorporate upstream
   updates here, then commit and push them once.
 - Keep secrets and machine-specific configuration outside this repository.
-
-## Codex documentation
-
-See the [official skill documentation](https://learn.chatgpt.com/docs/build-skills)
-for skill structure, local discovery, and plugin distribution.
