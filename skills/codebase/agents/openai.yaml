@@ -1,0 +1,4 @@
+interface:
+  display_name: "codebase"
+  short_description: "Explain how the current repository works"
+  default_prompt: "Use $codebase to explain how this repository implements a feature."

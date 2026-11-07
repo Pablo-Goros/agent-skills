@@ -1,0 +1,4 @@
+interface:
+  display_name: "git-guardrails-codex"
+  short_description: "Block dangerous git commands"
+

@@ -1,0 +1,5 @@
+interface:
+  display_name: "search-skill"
+  short_description: "Find skills for a task or sequence of tasks"
+policy:
+  allow_implicit_invocation: false

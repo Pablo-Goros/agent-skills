@@ -1,0 +1,15 @@
+# Conservative prefixes; see SKILL.md for enforcement and matching boundaries.
+prefix_rule(
+    pattern = [["git", "git.exe"], ["push", "reset", "clean", "checkout", "restore"]],
+    decision = "forbidden",
+    justification = "Git guardrails restrict publishing and potentially destructive operations. Ask the user to perform the operation manually.",
+    match = ["git push origin main", "git reset --hard HEAD", "git clean -fd", "git checkout .", "git restore .", "git.exe push origin main"],
+    not_match = ["git status", "git diff", "git add .", "git commit -m example", "git switch main"],
+)
+prefix_rule(
+    pattern = [["git", "git.exe"], "branch", ["-D", "-df", "-fd", "--delete"]],
+    decision = "forbidden",
+    justification = "Git guardrails restrict branch deletion. Ask the user to delete the branch manually.",
+    match = ["git branch -D topic", "git branch -df topic", "git branch --delete --force topic"],
+    not_match = ["git branch --list", "git branch topic"],
+)

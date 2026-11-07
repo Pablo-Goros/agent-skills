@@ -1,0 +1,3 @@
+interface:
+  display_name: "answer-questions"
+  short_description: "Answer question lists with stable numbered headings."

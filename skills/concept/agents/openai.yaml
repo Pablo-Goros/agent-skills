@@ -1,0 +1,4 @@
+interface:
+  display_name: "concept"
+  short_description: "Teach a general software concept clearly"
+  default_prompt: "Use $concept to explain a software concept in plain language."

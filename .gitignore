@@ -1,0 +1,15 @@
+# Local files and credentials
+.env
+.env.*
+*.log
+.DS_Store
+Thumbs.db
+/backups/
+/tmp/
+/logs/
+
+# Generated runtime files
+__pycache__/
+*.py[cod]
+.venv/
+node_modules/
