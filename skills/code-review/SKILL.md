@@ -10,8 +10,6 @@ Two-axis review of the diff between `HEAD` and a fixed point the user supplies:
 
 Both axes run as **parallel sub-agents** so they don't pollute each other's context, then this skill aggregates their findings.
 
-The issue tracker should have been provided to you. If not, tell the user to run `/setup-matt-pocock-skills`.
-
 ## Process
 
 ### 1. Pin the fixed point
@@ -24,12 +22,14 @@ Before going further, confirm the fixed point resolves (`git rev-parse <fixed-po
 
 ### 2. Identify the spec source
 
-Look for the originating spec, in this order:
+Look for the originating requirements, in this order:
 
-1. Issue references in the commit messages (`#123`, `Closes #45`, GitLab `!67`, etc.), fetched via the workflow in the tracker doc.
-2. A path the user passed as an argument.
-3. A spec file under `docs/`, `specs/`, or `.scratch/` matching the branch name or feature.
-4. If nothing is found, ask the user where the spec is. If they say there isn't one, the **Spec** sub-agent will skip and report "no spec available".
+1. A spec, ticket, or external reference supplied by the user. For a local ticket, read its linked spec when present.
+2. A matching `docs/specs/<feature-slug>/spec.md` and relevant tickets, identified from the branch name or changes.
+3. External issue references in commit messages, fetched using the available integration.
+4. If the source remains missing or ambiguous, ask the user. If no requirements source exists, skip the **Spec** sub-agent and report "no spec available".
+
+Include relevant ticket acceptance criteria and architectural constraints from applicable ADRs in the Spec review.
 
 ### 3. Identify the standards sources
 

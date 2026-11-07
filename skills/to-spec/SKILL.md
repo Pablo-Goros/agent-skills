@@ -1,12 +1,10 @@
 ---
 name: to-spec
-description: "Turn the current conversation into a spec and publish it to the project issue tracker: no interview, just synthesis of what you've already discussed."
+description: "Turn the current conversation into a local feature spec: no interview, just synthesis of what you've already discussed."
 disable-model-invocation: true
 ---
 
 This skill takes the current conversation context and codebase understanding and produces a spec. Do NOT interview the user; just synthesize what you already know.
-
-The issue tracker and triage label vocabulary should have been provided to you. If not, tell the user to run `/setup-matt-pocock-skills`.
 
 ## Process
 
@@ -16,7 +14,7 @@ The issue tracker and triage label vocabulary should have been provided to you. 
 
 Check with the user that these seams match their expectations.
 
-3. Write the spec using the template below, then publish it to the project issue tracker. Apply the `ready-for-agent` triage label - no need for additional triage.
+3. Write the spec using the template below to `docs/specs/<feature-slug>/spec.md`. Use a descriptive lowercase, hyphenated feature name, such as `password-reset`.
 
 <spec-template>
 
@@ -40,9 +38,13 @@ A LONG, numbered list of user stories. Each user story should be in the format o
 
 This list of user stories should be extremely extensive and cover all aspects of the feature.
 
+## Acceptance Criteria
+
+A numbered list of observable outcomes that define success for the whole feature. Individual tickets will define acceptance criteria for their narrower slices.
+
 ## Implementation Decisions
 
-A list of implementation decisions that were made. This can include:
+Summarize the implementation decisions and constraints this spec relies on. Link relevant ADRs for rationale rather than reproducing their contents. This can include:
 
 - The modules that will be built/modified
 - The interfaces of those modules that will be modified
@@ -52,7 +54,7 @@ A list of implementation decisions that were made. This can include:
 - API contracts
 - Specific interactions
 
-Do NOT include specific file paths or code snippets. They may end up being outdated very quickly.
+Avoid specific implementation file paths or code snippets, which can become outdated quickly. Include document links to relevant ADRs.
 
 Exception: if a prototype produced a snippet that encodes a decision more precisely than prose can (state machine, reducer, schema, type shape), inline it within the relevant decision and note briefly that it came from a prototype. Trim to the decision-rich parts, not a working demo, just the important bits.
 
