@@ -7,7 +7,9 @@ Interview the user relentlessly until you reach a shared understanding. Map this
 
 Work the tree in **rounds**. The **frontier** is every decision whose prerequisites are already settled: the questions you can ask _now_ without guessing at answers you haven't heard yet. Ask the whole frontier in one round: number each question and give your recommended answer. Then wait for the user's answers before the next round.
 
-Present questions through the available question UI (`request_user_input_async` or `request_user_input`, when permitted). Include recommended answers and split rounds to fit tool limits. Wait for answers before continuing with dependent questions.
+Present questions through the available question UI (`request_user_input_async` or `request_user_input`, when permitted). Include recommended answers and split rounds to fit tool limits. 
+
+While UI questions are pending, keep the turn active: use an interruptible wait tool after posting asynchronous questions, and resume when answers arrive. Never end the turn with unanswered UI questions unless the user stops or pauses the interview.
 
 If no question UI is available, use this chat format:
 
